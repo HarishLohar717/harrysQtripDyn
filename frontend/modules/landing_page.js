@@ -3,6 +3,7 @@ import config from "../conf/index.js";
 async function init() {
   //Fetches list of all cities along with their images and description
   let cities = await fetchCities();
+  console.log(cities);
 
   //Updates the DOM with the cities
   if (cities) {
@@ -12,10 +13,19 @@ async function init() {
   }
 }
 
+
 //Implementation of fetch call
 async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
+  try{
+    const response = await fetch(config.backendEndpoint+"/cities");
+    const data =  await response.json();
+    return data;
+  }
+  catch(error){
+    return null;
+  }
 
 }
 
@@ -23,7 +33,20 @@ async function fetchCities() {
 function addCityToDOM(id, city, description, image) {
   // TODO: MODULE_CITIES
   // 1. Populate the City details and insert those details into the DOM
-
+  console.log(id,city);
+  let cityElement = document.createElement("div");
+  cityElement.className="col-6 col-lg-3 mb-4";
+  cityElement.innerHTML=`
+     <a href="pages/adventures/?city=${id}" id="${id}">
+        <div class="tile">
+        <img class="img-responsive" src="${image}"/>
+           <div class="tile-text text-center">
+             <h5>${city}</h5>
+             <p>${description}</p>
+           </div>
+        </div>
+  </a>`;
+  document.getElementById("data").appendChild(cityElement);
 }
 
 export { init, fetchCities, addCityToDOM };

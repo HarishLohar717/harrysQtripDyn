@@ -4,7 +4,6 @@ async function init() {
   //Fetches list of all cities along with their images and description
   let cities = await fetchCities();
 
-
   //Updates the DOM with the cities
   if (cities) {
     cities.forEach((key) => {
@@ -12,7 +11,6 @@ async function init() {
     });
   }
 }
-
 
 //Implementation of fetch call
 async function fetchCities() {

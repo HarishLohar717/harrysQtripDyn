@@ -32,14 +32,14 @@ function addAdventureDetailsToDOM(adventure) {
   // 1. Add the details of the adventure to the HTML DOM
   document.getElementById("adventure-name").innerHTML = adventure.name;
   document.getElementById("adventure-subtitle").innerHTML = adventure.subtitle; 
-  // const phgalElem = document.getElementById("photo-gallery");
-  // adventure["images"].forEach(element => {
-  //   const div = document.createElement("div");
-  //   div.innerHTML =`
-  //   <img class="activity-card-image" src=${element}>
-  // `
-  //   phgalElem.appendChild(div);
-  // });
+  const phgalElem = document.getElementById("photo-gallery");
+  adventure["images"].forEach(element => {
+    const div = document.createElement("div");
+    div.innerHTML =`
+    <img class="activity-card-image" src=${element}>
+  `
+    phgalElem.appendChild(div);
+  });
   document.getElementById("adventure-content").innerHTML= adventure.content;
 }
 
@@ -131,8 +131,10 @@ function addBootstrapPhotoGallery(images) {
     carouselGlobalDiv.append(carInn);
     carouselGlobalDiv.append(carIconDiv);
     // console.log(typeof(carouselGlobalDiv));
-    const phgry = document.getElementById("photo-gallery"); 
+    const phgry= document.getElementById("photo-gallery");
+    phgry.innerHTML="";
     phgry.appendChild(carouselGlobalDiv);
+    
   }
 
 

@@ -38,7 +38,7 @@ footer {
 }
 
 .content {
-  padding: 100px 0px;
+  padding: 40px 0px;
   /* display: flex;
   flex-wrap: wrap; */
 }
@@ -153,9 +153,12 @@ footer {
 .activity-card-image {
   height: 500px;
   width: 100%;
+  /* object-fit: cover; */
   cursor: pointer;
   -webkit-transition: 0.2s all;
   border-radius: 2px;
+  
+ 
 }
 .activity-card-image:hover {
   -webkit-filter: brightness(50%);
